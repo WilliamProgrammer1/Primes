@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p id="output">Starting with...not much</p>
+
+    <script>
+        localStorage.setItem("number", 10)
+        let numb = +(localStorage.getItem("number"))
+        document.getElementById("output").innerHTML = "Welcome " + (numb + 1)
+    </script>
+
+
+</body>
+</html>

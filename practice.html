@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Stuff</title>
+</head>
+<body>
+    <h1 id="welcomeMessage">Loading</h1>
+
+    <div>
+        <input type="text" id="codeWord" value="Enter Something" onChange="doThing()">
+        <br>
+        <button type="button" onClick="doThing()">Click To Verify</button>
+    </div>
+
+    <p id="outputArea">More coming soon...</p>
+    
+    <script>
+        let userName = prompt("Please enter your name")
+
+        if(userName === "") {
+            userName = "Guest"
+        }
+
+        document.getElementById("welcomeMessage").textContent = "Welcome, " + userName + "!"
+
+        function doThing() {
+            const inputField = document.getElementById("codeWord")
+            const inputValue = inputField.value;
+            const outputArea = document.getElementById("outputArea")
+
+            if(inputValue === "") {
+                outputArea.textContent = "Please enter someting in the text box before clicking!"
+            } else if(inputValue.toLowerCase().includes("pass")) {
+                outputArea.textContent = "You shall not pass!"
+            } else {
+                const first = inputValue[0]
+                const last = inputValue[inputValue.length - 1]
+
+                if(inputValue.length <= 2) {
+                    outputArea.textContent = inputValue
+                } else {
+                    const middle = "*".repeat(inputValue.length - 2)
+                    outputArea.textContent = first + middle + last
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
