@@ -3,18 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Page Visit Tracker</title>
+    <script>
+        window.onload = doIt
+        function doIt() {
+            let visitCount = localStorage.getItem("visitCount")
+            const messageArea = document.getElementById("messageArea")
+            if(visitCount === null) {
+                visitCount = 1
+                localStorage.setItem("visitCount", visitCount)
+                messageArea.innerHTML = "<p>It looks like this is your first visit to our little site here</p>" + "<p>You have visited this page " + visitCount + " time</p>"
+            } else {
+                visitCount = parseInt(visitCount) + 1
+                localStorage.setItem("visitCount", visitCount)
+                messageArea.innerHTML = "<p>Welcome Back!</p>" + "<p>You have visited this page " + visitCount + " times</p>"
+            }
+        }
+    </script>
 </head>
 <body>
-    
-    <p id="output">Starting with...not much</p>
-
-    <script>
-        localStorage.setItem("number", 10)
-        let numb = +(localStorage.getItem("number"))
-        document.getElementById("output").innerHTML = "Welcome " + (numb + 1)
-    </script>
-
-
+    <div id="messageArea"></div>
 </body>
 </html>
